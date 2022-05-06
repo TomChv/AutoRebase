@@ -1,15 +1,19 @@
 name: Publish
+
 on:
   push:
-    branches:
-      - master
+    tags:
+      - "*"
 
 jobs:
   publish:
     name: Publish
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: dylanvann/publish-github-action@v1.1.49
+      - name: Checkout"
+        uses: actions/checkout@v1
+
+      - name: Publish action
+        uses: dylanvann/publish-github-action@v1.1.49
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
